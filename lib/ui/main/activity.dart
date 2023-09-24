@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_androssy/core.dart';
 import 'package:flutter_androssy/extensions.dart';
 import 'package:flutter_androssy/widgets.dart';
 
@@ -8,13 +9,31 @@ import '../../index.dart';
 class MainActivity extends BaseActivity<MainController> {
   const MainActivity({
     super.key,
-    super.title = "Home",
     super.elevation = 0,
   });
 
   @override
   MainController init(BuildContext context) {
     return MainController();
+  }
+
+  @override
+  Widget? onCreateTitle(BuildContext context) {
+    if (controller.selectionType.isShows) {
+      return const Center(
+        child: ImageView(
+          image: LogoContent.logo,
+          width: 40,
+          shape: ViewShape.squire,
+        ),
+      );
+    } else {
+      return Center(
+        child: Text(
+          controller.selectionType.title,
+        ),
+      );
+    }
   }
 
   @override
@@ -40,11 +59,9 @@ class MainActivity extends BaseActivity<MainController> {
   @override
   Widget? onCreateDrawer(BuildContext context) {
     return HomeActivityDrawer(
-      instance: instance,
+      translate: instance.translate,
       currentSelection: controller.selectionType,
-      onSelectionChange: (c, s) {
-        controller.onNotifyWithSelection(c, s);
-      },
+      onSelectionChange: controller.onNotifyWithSelection,
     );
   }
 

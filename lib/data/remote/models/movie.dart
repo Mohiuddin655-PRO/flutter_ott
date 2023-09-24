@@ -1,14 +1,14 @@
 import 'package:data_management/core.dart';
 import 'package:flutter_andomie/core.dart';
 
-class MovieModel extends Data {
+class Movie extends Data {
   final String? thumbnail;
   final String? url;
   final String? link;
   final String? name;
   final String? description;
 
-  MovieModel({
+  Movie({
     super.id,
     super.timeMills,
     this.thumbnail,
@@ -18,8 +18,8 @@ class MovieModel extends Data {
     this.description,
   });
 
-  factory MovieModel.from(Object? source) {
-    return MovieModel(
+  factory Movie.from(Object? source) {
+    return Movie(
       id: source.entityId,
       timeMills: source.entityTimeMills,
       thumbnail: source.entityValue("thumbnail"),

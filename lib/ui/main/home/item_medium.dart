@@ -5,7 +5,7 @@ import 'package:flutter_androssy/widgets.dart';
 import 'package:flutter_ott/data/index.dart';
 
 class ItemMedium extends StatelessWidget {
-  final MovieModel model;
+  final Movie model;
 
   const ItemMedium({
     super.key,

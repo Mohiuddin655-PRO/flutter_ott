@@ -2,13 +2,13 @@ import 'package:data_management/core.dart';
 
 import '../../../index.dart';
 
-class MovieDataSource extends FireStoreDataSourceImpl<MovieModel> {
+class MovieDataSource extends FireStoreDataSourceImpl<Movie> {
   MovieDataSource({
     super.path = ApiInfo.movies,
   });
 
   @override
-  MovieModel build(source) {
-    return MovieModel.from(source);
+  Movie build(source) {
+    return Movie.from(source);
   }
 }

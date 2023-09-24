@@ -6,7 +6,7 @@ import '../../../index.dart';
 class MovieCategoryModel extends Data {
   final String? name;
   final MovieCategoryType? type;
-  final List<MovieModel>? contents;
+  final List<Movie>? contents;
 
   MovieCategoryModel({
     super.id,
@@ -25,7 +25,7 @@ class MovieCategoryModel extends Data {
         return MovieCategoryType.from(value);
       }),
       contents: source.entityObjects("movies", (value) {
-        return MovieModel.from(value);
+        return Movie.from(value);
       }),
     );
   }

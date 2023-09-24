@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_androssy/core.dart';
 import 'package:flutter_androssy/extensions.dart';
 import 'package:flutter_androssy/services.dart';
 import 'package:flutter_androssy/widgets.dart';
 import 'package:flutter_ott/index.dart';
 
 class HomeDrawerFooter extends StatelessWidget {
-  final AndrossyInstance instance;
   final OnViewClickListener? onSignIn, onSignUp;
+  final String Function(String value) translate;
 
   const HomeDrawerFooter({
     super.key,
-    required this.instance,
+    required this.translate,
     this.onSignIn,
     this.onSignUp,
   });
@@ -25,19 +24,17 @@ class HomeDrawerFooter extends StatelessWidget {
       paddingBottom: 24,
       children: [
         TextView(
-          text: instance.translate(
-            "For better experience please login or register",
-          ),
+          text: translate("For better experience please login or register"),
           textStyle: context.textTheme.titleSmall,
         ),
         PrimaryButton(
           marginTop: 16,
-          text: instance.translate("Log in"),
+          text: translate("Log in"),
           onClick: onSignIn,
         ),
         SecondaryButton(
           marginTop: 16,
-          text: instance.translate("Sign up"),
+          text: translate("Sign up"),
           onClick: onSignUp,
         ),
       ],

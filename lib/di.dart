@@ -50,16 +50,16 @@ void _movie() {
     return BackupMovieDataSource();
   });
 
-  di.registerLazySingleton<RemoteDataRepository<MovieModel>>(() {
-    return RemoteDataRepositoryImpl<MovieModel>(
+  di.registerLazySingleton<RemoteDataRepository<Movie>>(() {
+    return RemoteDataRepositoryImpl<Movie>(
       source: di<MovieDataSource>(),
       backup: di<BackupMovieDataSource>(),
       isCacheMode: true,
     );
   });
 
-  di.registerLazySingleton<RemoteDataHandler<MovieModel>>(() {
-    return RemoteDataHandlerImpl<MovieModel>(repository: di());
+  di.registerLazySingleton<RemoteDataHandler<Movie>>(() {
+    return RemoteDataHandlerImpl<Movie>(repository: di());
   });
 
   di.registerFactory<MovieDataController>(() => MovieDataController(di()));

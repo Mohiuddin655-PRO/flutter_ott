@@ -25,7 +25,7 @@ class MovieCategoryDataController
                     : MovieCategoryType.none,
             contents: List.generate(
               10,
-              (index) => MovieModel(
+              (index) => Movie(
                 name: "Movie name [$index]",
                 description: "Movie description [$index]",
               ),
