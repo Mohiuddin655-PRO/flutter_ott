@@ -42,8 +42,15 @@ ThemeData _light = ThemeData.from(
     surfaceTintColor: Colors.transparent,
   ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    backgroundColor: AppColors.appbar.light,
     selectedItemColor: Colors.white,
     unselectedItemColor: Colors.white.t50,
+    selectedLabelStyle: const TextStyle(
+      fontSize: 12,
+    ),
+    unselectedLabelStyle: const TextStyle(
+      fontSize: 12,
+    ),
   ),
 
   /// BODY PROPERTIES

@@ -1,6 +1,10 @@
 import 'package:data_management/core.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ott/feature/presentation/controllers/movie_latest.dart';
+import 'package:flutter_ott/feature/presentation/controllers/movie_most_watched.dart';
+import 'package:flutter_ott/feature/presentation/controllers/movie_premium.dart';
+import 'package:flutter_ott/feature/presentation/controllers/movie_recent_watch.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -42,27 +46,82 @@ void _user() {
 }
 
 void _movie() {
-  di.registerLazySingleton<MovieDataSource>(() {
-    return MovieDataSource();
+  /// DEMO PROJECT MODE ONLY
+  /// USING TDD ARCHITECTURE
+  di.registerLazySingleton<MovieSource>(() {
+    return MovieSource();
   });
 
-  di.registerLazySingleton<BackupMovieDataSource>(() {
-    return BackupMovieDataSource();
+  di.registerLazySingleton<MovieRepository>(() {
+    return MovieRepository(source: di());
   });
 
-  di.registerLazySingleton<RemoteDataRepository<Movie>>(() {
-    return RemoteDataRepositoryImpl<Movie>(
-      source: di<MovieDataSource>(),
-      backup: di<BackupMovieDataSource>(),
-      isCacheMode: true,
-    );
+  di.registerLazySingleton<GetFreeForLimitedTimeMovies>(() {
+    return GetFreeForLimitedTimeMovies(repository: di());
+  });
+  di.registerLazySingleton<GetLatestMovies>(() {
+    return GetLatestMovies(repository: di());
+  });
+  di.registerLazySingleton<GetMostWatchedMovies>(() {
+    return GetMostWatchedMovies(repository: di());
+  });
+  di.registerLazySingleton<GetPremiumMovies>(() {
+    return GetPremiumMovies(repository: di());
+  });
+  di.registerLazySingleton<GetRecentWatchMovies>(() {
+    return GetRecentWatchMovies(repository: di());
+  });
+  di.registerLazySingleton<GetShortMovies>(() {
+    return GetShortMovies(repository: di());
+  });
+  di.registerLazySingleton<GetSpecificHeroVideos>(() {
+    return GetSpecificHeroVideos(repository: di());
+  });
+  di.registerLazySingleton<GetTrailerVideos>(() {
+    return GetTrailerVideos(repository: di());
+  });
+  di.registerFactory<MovieFreeController>(() {
+    return MovieFreeController(get: di());
+  });
+  di.registerFactory<MovieLatestController>(() {
+    return MovieLatestController(get: di());
+  });
+  di.registerFactory<MovieMostWatchedController>(() {
+    return MovieMostWatchedController(get: di());
+  });
+  di.registerFactory<MoviePremiumController>(() {
+    return MoviePremiumController(get: di());
+  });
+  di.registerFactory<MovieRecentWatchController>(() {
+    return MovieRecentWatchController(get: di());
+  });
+  di.registerFactory<MovieShortController>(() {
+    return MovieShortController(get: di());
   });
 
-  di.registerLazySingleton<RemoteDataHandler<Movie>>(() {
-    return RemoteDataHandlerImpl<Movie>(repository: di());
-  });
-
-  di.registerFactory<MovieDataController>(() => MovieDataController(di()));
+  /// REAL PROJECT MODE ONLY
+  /// USING DATA MANAGEMENT (DATA ARCHITECTURE BASED) WITH CACHING MECHANISM
+  // di.registerLazySingleton<MovieDataSource>(() {
+  //   return MovieDataSource();
+  // });
+  //
+  // di.registerLazySingleton<BackupMovieDataSource>(() {
+  //   return BackupMovieDataSource();
+  // });
+  //
+  // di.registerLazySingleton<RemoteDataRepository<Movie>>(() {
+  //   return RemoteDataRepositoryImpl<Movie>(
+  //     source: di<MovieDataSource>(),
+  //     backup: di<BackupMovieDataSource>(),
+  //     isCacheMode: true,
+  //   );
+  // });
+  //
+  // di.registerLazySingleton<RemoteDataHandler<Movie>>(() {
+  //   return RemoteDataHandlerImpl<Movie>(repository: di());
+  // });
+  //
+  // di.registerFactory<MovieDataController>(() => MovieDataController(di()));
 }
 
 void _movieCategory() {
