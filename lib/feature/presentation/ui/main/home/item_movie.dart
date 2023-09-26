@@ -21,6 +21,7 @@ class ItemMovie extends StatelessWidget {
       width: dimensionSize,
       height: dimensionSize.xi(65),
       image: model.thumbnail,
+      scaleType: BoxFit.cover,
       background: Colors.grey.t50,
       borderRadius: dimensionSize.x(10),
     );

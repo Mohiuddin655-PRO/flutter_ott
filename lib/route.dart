@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_navigator/app_navigator.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ott/feature/presentation/controllers/movie_latest.dart';
-import 'package:flutter_ott/feature/presentation/controllers/movie_most_watched.dart';
-import 'package:flutter_ott/feature/presentation/controllers/movie_premium.dart';
-import 'package:flutter_ott/feature/presentation/controllers/movie_recent_watch.dart';
 
 import 'index.dart';
 
@@ -48,6 +44,8 @@ class AppRouter extends AppRouteGenerator {
         BlocProvider(create: (_) => di<MoviePremiumController>()..fetch()),
         BlocProvider(create: (_) => di<MovieRecentWatchController>()..fetch()),
         BlocProvider(create: (_) => di<MovieShortController>()..fetch()),
+        BlocProvider(create: (_) => di<MovieCarouselController>()..fetch()),
+        BlocProvider(create: (_) => di<MovieTrailerController>()..fetch()),
       ],
       child: const MainActivity(),
     );

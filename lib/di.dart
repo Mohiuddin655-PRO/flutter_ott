@@ -98,6 +98,12 @@ void _movie() {
   di.registerFactory<MovieShortController>(() {
     return MovieShortController(get: di());
   });
+  di.registerFactory<MovieCarouselController>(() {
+    return MovieCarouselController(get: di());
+  });
+  di.registerFactory<MovieTrailerController>(() {
+    return MovieTrailerController(get: di());
+  });
 
   /// REAL PROJECT MODE ONLY
   /// USING DATA MANAGEMENT (DATA ARCHITECTURE BASED) WITH CACHING MECHANISM

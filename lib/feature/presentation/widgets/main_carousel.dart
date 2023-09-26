@@ -3,13 +3,16 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_androssy/widgets.dart';
 import 'package:flutter_ott/index.dart';
+import 'package:shimmer/shimmer.dart';
 
 class MainCarousel extends StatelessWidget {
+  final bool placeholderMode;
   final EdgeInsets? margin;
-  final List<MainCarouselInfo> items;
+  final List<Movie> items;
 
   const MainCarousel({
     super.key,
+    this.placeholderMode = false,
     this.margin,
     this.items = const [],
   });
@@ -22,9 +25,20 @@ class MainCarousel extends StatelessWidget {
         itemCount: items.length,
         itemBuilder: (context, index, realIndex) {
           var item = items[index];
+          if (placeholderMode) {
+            return Shimmer.fromColors(
+              baseColor: Colors.grey.t50,
+              highlightColor: Colors.grey.t25,
+              child: YMRView(
+                width: double.infinity,
+                background: Colors.grey.t50,
+                borderRadius: 24,
+              ),
+            );
+          }
           return ImageView(
             width: double.infinity,
-            image: item.photoUrl,
+            image: item.thumbnail,
             background: Colors.grey.t50,
             borderRadius: 24,
             scaleType: BoxFit.cover,
@@ -43,7 +57,7 @@ class MainCarousel extends StatelessWidget {
 }
 
 class MainCarouselInfo {
-  final String photoUrl;
+  final dynamic photoUrl;
 
   const MainCarouselInfo({
     this.photoUrl = "",
