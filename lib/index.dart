@@ -8,5 +8,4 @@ export 'di.dart';
 export 'feature/index.dart';
 export 'route.dart';
 export 'theme.dart';
-export 'ui/index.dart';
 export 'utils/index.dart';

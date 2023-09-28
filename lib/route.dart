@@ -19,21 +19,16 @@ class AppRouter extends AppRouteGenerator {
   @override
   Map<String, RouteBuilder> routes() {
     return {
-      AuthScreens.route: auth,
-      MainScreens.route: main,
-      SettingsScreens.route: settings,
       SplashScreens.route: splash,
+      MainScreens.route: main,
+      SeeAllScreens.route: seeAll,
+      SubscriptionScreens.route: subscription,
+      PlayerScreens.route: player,
     };
   }
 
   @override
   Widget onDefault(BuildContext context, Object? data) => main(context, data);
-
-  Widget auth(BuildContext context, Object? data) {
-    return AuthActivity(
-      screen: data("screen", AuthScreens.signIn),
-    );
-  }
 
   Widget main(BuildContext context, Object? data) {
     return MultiBlocProvider(
@@ -51,9 +46,26 @@ class AppRouter extends AppRouteGenerator {
     );
   }
 
-  Widget settings(BuildContext context, Object? data) {
-    return SettingsActivity(
-      screen: data("screen", SettingsScreens.none),
+  Widget subscription(BuildContext context, Object? data) {
+    return SubscriptionActivity(
+      data: data("data", Video()),
+    );
+  }
+
+  Widget player(BuildContext context, Object? data) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => di<MovieLatestController>()..fetch()),
+      ],
+      child: PlayerActivity(
+        data: data("data", Video()),
+      ),
+    );
+  }
+
+  Widget seeAll(BuildContext context, Object? data) {
+    return SeeAllActivity(
+      category: data("category", ""),
     );
   }
 

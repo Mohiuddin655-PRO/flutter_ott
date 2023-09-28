@@ -37,7 +37,7 @@ class Application extends StatelessWidget {
           themeMode: value.settings.theme,
           theme: theme.light,
           darkTheme: theme.light,
-          initialRoute: MainScreens.route,
+          initialRoute: SplashScreens.route,
           onGenerateRoute: AppRouter.I.generate,
         );
       },

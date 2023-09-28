@@ -1,6 +1,7 @@
 import 'package:data_management/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_androssy/widgets.dart';
+import 'package:flutter_app_navigator/app_navigator.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../index.dart';
@@ -121,103 +122,7 @@ class HomeFragment extends StatelessWidget {
         BlocBuilder<MovieShortController, DataResponse<Movie>>(
           builder: (context, response) {
             return CategoryMoviesForSmall(
-              category: translate("Shakib - The Ultimate hero"),
-              translate: translate,
-              placeholderMode: response.isLoading,
-              movies: response.isLoading
-                  ? List.generate(10, (index) => Movie())
-                  : response.result,
-            );
-          },
-        ),
-        BlocBuilder<MovieShortController, DataResponse<Movie>>(
-          builder: (context, response) {
-            return CategoryMoviesForSmall(
-              category: translate("Most Watched"),
-              translate: translate,
-              placeholderMode: response.isLoading,
-              movies: response.isLoading
-                  ? List.generate(10, (index) => Movie())
-                  : response.result.reversed.toList(),
-            );
-          },
-        ),
-        BlocBuilder<MovieShortController, DataResponse<Movie>>(
-          builder: (context, response) {
-            return CategoryMoviesForSmall(
               category: translate("Live TV"),
-              translate: translate,
-              placeholderMode: response.isLoading,
-              movies: response.isLoading
-                  ? List.generate(10, (index) => Movie())
-                  : response.result,
-            );
-          },
-        ),
-        BlocBuilder<MovieShortController, DataResponse<Movie>>(
-          builder: (context, response) {
-            return CategoryMoviesForSmall(
-              category: translate("You may also like"),
-              translate: translate,
-              placeholderMode: response.isLoading,
-              movies: response.isLoading
-                  ? List.generate(10, (index) => Movie())
-                  : response.result.reversed.toList(),
-            );
-          },
-        ),
-        BlocBuilder<MovieShortController, DataResponse<Movie>>(
-          builder: (context, response) {
-            return CategoryMoviesForSmall(
-              category: translate("Stories to Remember"),
-              translate: translate,
-              placeholderMode: response.isLoading,
-              movies: response.isLoading
-                  ? List.generate(10, (index) => Movie())
-                  : response.result,
-            );
-          },
-        ),
-        BlocBuilder<MovieShortController, DataResponse<Movie>>(
-          builder: (context, response) {
-            return CategoryMoviesForSmall(
-              category: translate("South indian hits"),
-              translate: translate,
-              placeholderMode: response.isLoading,
-              movies: response.isLoading
-                  ? List.generate(10, (index) => Movie())
-                  : response.result.reversed.toList(),
-            );
-          },
-        ),
-        BlocBuilder<MovieShortController, DataResponse<Movie>>(
-          builder: (context, response) {
-            return CategoryMoviesForSmall(
-              category: translate("Treading now"),
-              translate: translate,
-              placeholderMode: response.isLoading,
-              movies: response.isLoading
-                  ? List.generate(10, (index) => Movie())
-                  : response.result,
-            );
-          },
-        ),
-        BlocBuilder<MovieShortController, DataResponse<Movie>>(
-          builder: (context, response) {
-            return CategoryMoviesForSmall(
-              category: translate("Bongo original"),
-              translate: translate,
-              placeholderMode: response.isLoading,
-              movies: response.isLoading
-                  ? List.generate(10, (index) => Movie())
-                  : response.result.reversed.toList(),
-            );
-          },
-        ),
-        BlocBuilder<MovieShortController, DataResponse<Movie>>(
-          builder: (context, response) {
-            return CategoryMoviesForSmall(
-              category: translate("Blockbusters"),
               translate: translate,
               placeholderMode: response.isLoading,
               movies: response.isLoading
@@ -274,18 +179,6 @@ class HomeFragment extends StatelessWidget {
             );
           },
         ),
-        BlocBuilder<MovieShortController, DataResponse<Movie>>(
-          builder: (context, response) {
-            return CategoryMoviesForSmall(
-              category: translate("Binge with old hits"),
-              translate: translate,
-              placeholderMode: response.isLoading,
-              movies: response.isLoading
-                  ? List.generate(10, (index) => Movie())
-                  : response.result.reversed.toList(),
-            );
-          },
-        ),
         BlocBuilder<MovieTrailerController, DataResponse<Movie>>(
           builder: (context, response) {
             return CategoryMoviesForTrailer(
@@ -293,90 +186,6 @@ class HomeFragment extends StatelessWidget {
               translate: translate,
               placeholderMode: response.isLoading,
               movie: response.isLoading ? Movie() : response.result[2],
-            );
-          },
-        ),
-        BlocBuilder<MovieShortController, DataResponse<Movie>>(
-          builder: (context, response) {
-            return CategoryMoviesForSmall(
-              category: translate("Series"),
-              translate: translate,
-              placeholderMode: response.isLoading,
-              movies: response.isLoading
-                  ? List.generate(10, (index) => Movie())
-                  : response.result.reversed.toList(),
-            );
-          },
-        ),
-        BlocBuilder<MovieShortController, DataResponse<Movie>>(
-          builder: (context, response) {
-            return CategoryMoviesForSmall(
-              category: translate("Bangla dubbed"),
-              translate: translate,
-              placeholderMode: response.isLoading,
-              movies: response.isLoading
-                  ? List.generate(10, (index) => Movie())
-                  : response.result,
-            );
-          },
-        ),
-        BlocBuilder<MovieShortController, DataResponse<Movie>>(
-          builder: (context, response) {
-            return CategoryMoviesForSmall(
-              category: translate("Turkey in Bangla"),
-              translate: translate,
-              placeholderMode: response.isLoading,
-              movies: response.isLoading
-                  ? List.generate(10, (index) => Movie())
-                  : response.result.reversed.toList(),
-            );
-          },
-        ),
-        BlocBuilder<MovieShortController, DataResponse<Movie>>(
-          builder: (context, response) {
-            return CategoryMoviesForSmall(
-              category: translate("Bongo original series"),
-              translate: translate,
-              placeholderMode: response.isLoading,
-              movies: response.isLoading
-                  ? List.generate(10, (index) => Movie())
-                  : response.result,
-            );
-          },
-        ),
-        BlocBuilder<MovieShortController, DataResponse<Movie>>(
-          builder: (context, response) {
-            return CategoryMoviesForSmall(
-              category: translate("Bongo bob"),
-              translate: translate,
-              placeholderMode: response.isLoading,
-              movies: response.isLoading
-                  ? List.generate(10, (index) => Movie())
-                  : response.result.reversed.toList(),
-            );
-          },
-        ),
-        BlocBuilder<MovieShortController, DataResponse<Movie>>(
-          builder: (context, response) {
-            return CategoryMoviesForSmall(
-              category: translate("Classified classic's"),
-              translate: translate,
-              placeholderMode: response.isLoading,
-              movies: response.isLoading
-                  ? List.generate(10, (index) => Movie())
-                  : response.result,
-            );
-          },
-        ),
-        BlocBuilder<MovieShortController, DataResponse<Movie>>(
-          builder: (context, response) {
-            return CategoryMoviesForSmall(
-              category: translate("Comedy store"),
-              translate: translate,
-              placeholderMode: response.isLoading,
-              movies: response.isLoading
-                  ? List.generate(10, (index) => Movie())
-                  : response.result.reversed.toList(),
             );
           },
         ),
@@ -428,6 +237,14 @@ class CategoryMoviesForSmall extends StatelessWidget {
               textFontWeight: FontWeight.w500,
               textColor: AppColors.secondary,
               textAllCaps: true,
+              onClick: (con) {
+                AppNavigator.of(context).push(
+                  SeeAllScreens.route,
+                  arguments: {
+                    "category": category,
+                  },
+                );
+              },
             ),
           ],
         ),
@@ -443,8 +260,18 @@ class CategoryMoviesForSmall extends StatelessWidget {
             if (placeholderMode) {
               return const ItemPlaceholderSmall();
             }
-            return ItemMovie(
-              model: content,
+            return GestureDetector(
+              onTap: () {
+                AppNavigator.of(context).push(
+                  PlayerScreens.route,
+                  arguments: {
+                    "data": content,
+                  },
+                );
+              },
+              child: ItemMovie(
+                model: content,
+              ),
             );
           },
         ),
@@ -496,6 +323,14 @@ class CategoryMoviesForMedium extends StatelessWidget {
               textFontWeight: FontWeight.w500,
               textColor: AppColors.secondary,
               textAllCaps: true,
+              onClick: (con) {
+                AppNavigator.of(context).push(
+                  SeeAllScreens.route,
+                  arguments: {
+                    "category": category,
+                  },
+                );
+              },
             ),
           ],
         ),
@@ -511,8 +346,18 @@ class CategoryMoviesForMedium extends StatelessWidget {
             if (placeholderMode) {
               return const ItemPlaceholderDrama();
             }
-            return ItemDrama(
-              model: content,
+            return GestureDetector(
+              onTap: () {
+                AppNavigator.of(context).push(
+                  SubscriptionScreens.route,
+                  arguments: {
+                    "data": content,
+                  },
+                );
+              },
+              child: ItemDrama(
+                model: content,
+              ),
             );
           },
         ),
@@ -542,8 +387,18 @@ class CategoryMoviesForTrailer extends StatelessWidget {
     if (placeholderMode) {
       return const ItemTrailerPlaceholder();
     }
-    return ItemTrailer(
-      item: movie,
+    return GestureDetector(
+      onTap: () {
+        AppNavigator.of(context).push(
+          PlayerScreens.route,
+          arguments: {
+            "data": movie,
+          },
+        );
+      },
+      child: ItemTrailer(
+        item: movie,
+      ),
     );
   }
 }

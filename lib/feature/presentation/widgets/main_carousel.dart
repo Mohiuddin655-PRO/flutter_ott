@@ -2,6 +2,7 @@ import 'package:app_color/app_color.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_androssy/widgets.dart';
+import 'package:flutter_app_navigator/app_navigator.dart';
 import 'package:flutter_ott/index.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -36,12 +37,20 @@ class MainCarousel extends StatelessWidget {
               ),
             );
           }
-          return ImageView(
-            width: double.infinity,
-            image: item.thumbnail,
-            background: Colors.grey.t50,
-            borderRadius: 24,
-            scaleType: BoxFit.cover,
+          return GestureDetector(
+            onTap: () {
+              AppNavigator.of(context).push(
+                SubscriptionScreens.route,
+                arguments: {"data": item},
+              );
+            },
+            child: ImageView(
+              width: double.infinity,
+              image: item.thumbnail,
+              background: Colors.grey.t50,
+              borderRadius: 24,
+              scaleType: BoxFit.cover,
+            ),
           );
         },
         options: CarouselOptions(

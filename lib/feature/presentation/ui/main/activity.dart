@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_androssy/extensions.dart';
 import 'package:flutter_androssy/widgets.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../index.dart';
 
@@ -113,8 +112,7 @@ class MainActivity extends BaseActivity<MainController> {
 
   @override
   Widget onCreate(context, instance) {
-    /// FOR REAL PROJECT
-    /*return IndexedStack(
+    return IndexedStack(
       index: controller.index,
       children: [
         HomeFragment(translate: translate),
@@ -123,30 +121,6 @@ class MainActivity extends BaseActivity<MainController> {
         DramaFragment(translate: translate),
         ComingSoonFragment(translate: translate),
       ],
-    );*/
-
-    /// FOR DEMO PROJECT
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (_) => di<MovieFreeController>()..fetch()),
-        BlocProvider(create: (_) => di<MovieLatestController>()..fetch()),
-        BlocProvider(create: (_) => di<MovieMostWatchedController>()..fetch()),
-        BlocProvider(create: (_) => di<MoviePremiumController>()..fetch()),
-        BlocProvider(create: (_) => di<MovieRecentWatchController>()..fetch()),
-        BlocProvider(create: (_) => di<MovieShortController>()..fetch()),
-        BlocProvider(create: (_) => di<MovieCarouselController>()..fetch()),
-        BlocProvider(create: (_) => di<MovieTrailerController>()..fetch()),
-      ],
-      child: IndexedStack(
-        index: controller.index,
-        children: [
-          HomeFragment(translate: translate),
-          TVFragment(translate: translate),
-          MoviesFragment(translate: translate),
-          DramaFragment(translate: translate),
-          ComingSoonFragment(translate: translate),
-        ],
-      ),
     );
   }
 }
